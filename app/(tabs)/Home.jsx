@@ -13,12 +13,14 @@ import CourseProgress from "../../components/home/CourseProgress";
 export default function Home() {
   const [courseList, setCourseList] = useState([]);
   const { userInfo } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     userInfo && getCourseList();
   }, [userInfo]);
 
   const getCourseList = async () => {
+    setLoading(true);
     setCourseList([]);
     const q = query(
       collection(db, "courses"),
@@ -30,17 +32,20 @@ export default function Home() {
       // console.log(doc.data());
       setCourseList((prev) => [...prev, doc.data()]);
     });
+    setLoading(false);
   };
   return (
     <FlatList
       data={[]}
+      onRefresh={() => getCourseList()}
+      refreshing={loading}
       ListHeaderComponent={
         <View style={styles.container}>
           <Header />
           {courseList?.length == 0 ? (
             <NoCourse />
           ) : (
-            <View>
+            <View style={{ display: "flex", gap: 15 }}>
               <CourseProgress courseList={courseList} />
               <PracticeSection />
               <CourseList courseList={courseList} />
@@ -54,7 +59,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: Colors.WHITE,
     paddingTop: Platform.OS === "ios" && 45,
     paddingHorizontal: 30,

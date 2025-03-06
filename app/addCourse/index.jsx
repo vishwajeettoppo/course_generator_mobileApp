@@ -143,8 +143,8 @@ export default function AddCourse() {
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
-    // marginTop: 20,
+    flex: 1,
+    backgroundColor: Colors.WHITE,
     padding: 20,
   },
   text1: {

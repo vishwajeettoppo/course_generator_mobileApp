@@ -5,6 +5,11 @@ import { imageAssets } from "../../constants/Options";
 import * as Progress from "react-native-progress";
 
 export default function CourseProgress({ courseList }) {
+  const GetCompletedChapters = (course) => {
+    const completedChapters = course?.completedChapter?.length;
+    const per = completedChapters / course?.chapters?.length;
+    return per;
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.text1}>CourseProgress</Text>
@@ -47,15 +52,29 @@ export default function CourseProgress({ courseList }) {
                   {item?.courseTitle}
                 </Text>
                 <Text
-                  style={{ fontFamily: "outfit", fontSize: 14, marginTop: 10, color:Colors.GRAY }}
+                  style={{
+                    fontFamily: "outfit",
+                    fontSize: 14,
+                    marginTop: 10,
+                    color: Colors.GRAY,
+                  }}
                 >
                   {item?.chapters?.length} Chapters
                 </Text>
               </View>
             </View>
-            <View style={{marginBottom:4, gap:5}}>
-              <Progress.Bar progress={0.3} width={250} />
-              <Text style={{fontFamily:'outfit', fontSize:14, color:Colors.GRAY}}>3 Out of 5 Chapters Completed</Text>
+            <View style={{ marginBottom: 4, gap: 5 }}>
+              <Progress.Bar progress={GetCompletedChapters(item)} width={250} />
+              <Text
+                style={{
+                  fontFamily: "outfit",
+                  fontSize: 14,
+                  color: Colors.GRAY,
+                }}
+              >
+                {item?.completedChapter?.length ?? 0} of{" "}
+                {item?.chapters?.length} Chapters Completed
+              </Text>
             </View>
           </View>
         )}
@@ -65,13 +84,11 @@ export default function CourseProgress({ courseList }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-  },
+  container: {},
   text1: {
     fontFamily: "outfit-medium",
     fontSize: 25,
     color: Colors.PRIMARY,
-    marginBottom: 20,
+    marginBottom: 10,
   },
 });

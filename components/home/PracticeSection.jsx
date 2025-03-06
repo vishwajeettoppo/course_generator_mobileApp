@@ -14,7 +14,7 @@ export default function PracticeSection() {
           data={PracticeOptions}
           numColumns={3}
           renderItem={({ item, index }) => (
-            <View style={{ borderWidth: 1, flex: 1, marginHorizontal: 3 }}>
+            <View style={{ flex: 1, marginHorizontal: 3 }}>
               <Image source={item?.image} style={styles.image} />
               <Text style={styles.imageText}>{item.name}</Text>
             </View>
@@ -26,14 +26,12 @@ export default function PracticeSection() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-  },
+  container: {},
   text1: {
     fontFamily: "outfit-medium",
     fontSize: 25,
     color: Colors.PRIMARY,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   image: {
     width: "100%",
@@ -43,8 +41,8 @@ const styles = StyleSheet.create({
   imageText: {
     position: "absolute",
     padding: 10,
-    fontFamily:'outfit-medium',
-    fontSize:14,
-    color:'white'
+    fontFamily: "outfit-medium",
+    fontSize: 14,
+    color: "white",
   },
 });

@@ -53,14 +53,12 @@ export default function CourseList({ courseList }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-  },
+  container: {},
   text1: {
     fontFamily: "outfit-medium",
     fontSize: 25,
     color: Colors.PRIMARY,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   courseContainer: {
     backgroundColor: Colors.LIGHTGRAY,
