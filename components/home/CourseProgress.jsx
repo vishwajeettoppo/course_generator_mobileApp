@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   text1: {
     fontFamily: "outfit-medium",
     fontSize: 25,
-    color: Colors.PRIMARY,
+    color: Colors.WHITE,
     marginBottom: 10,
   },
 });

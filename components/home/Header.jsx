@@ -1,12 +1,11 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import Ionicons from "@expo/vector-icons/Ionicons";
 import Colors from "../../constants/Colors";
 
 export default function Header() {
-
-  const { userInfo, setUserInfo} = useContext(UserContext);
+  const { userInfo, setUserInfo } = useContext(UserContext);
 
   // console.log('Name : ',userInfo)
 
@@ -16,18 +15,18 @@ export default function Header() {
         <Text style={styles.text1}>Hi, {userInfo?.name}</Text>
         <Text style={styles.text2}>Let's Get Started</Text>
       </View>
-      <TouchableOpacity><Ionicons name="settings-outline" size={24} color="black" /></TouchableOpacity>
+      <TouchableOpacity>
+        <Ionicons name="settings-outline" size={24} color="black" />
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container:{
-    // flex: 1,
+  container: {
     paddingVertical: 25,
-    backgroundColor: Colors.WHITE,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   text1: {
     fontFamily: "outfit-bold",

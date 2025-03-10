@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, Platform, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Platform,
+  FlatList,
+  Image,
+} from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/home/Header";
 import Colors from "../../constants/Colors";
@@ -9,6 +16,7 @@ import { UserContext } from "../../context/UserContext";
 import CourseList from "../../components/home/CourseList";
 import PracticeSection from "../../components/home/PracticeSection";
 import CourseProgress from "../../components/home/CourseProgress";
+import wave from "../../assets/images/wave3.png";
 
 export default function Home() {
   const [courseList, setCourseList] = useState([]);
@@ -39,18 +47,30 @@ export default function Home() {
       data={[]}
       onRefresh={() => getCourseList()}
       refreshing={loading}
+      style={{ flex: 1, backgroundColor: Colors.WHITE }}
       ListHeaderComponent={
-        <View style={styles.container}>
-          <Header />
-          {courseList?.length == 0 ? (
-            <NoCourse />
-          ) : (
-            <View style={{ display: "flex", gap: 15 }}>
-              <CourseProgress courseList={courseList} />
-              <PracticeSection />
-              <CourseList courseList={courseList} />
-            </View>
-          )}
+        <View>
+          <Image
+            source={wave}
+            style={{
+              position: "absolute",
+              height: 650,
+              width: "100%",
+              objectFit: "cover",
+            }}
+          />
+          <View style={styles.container}>
+            <Header />
+            {courseList?.length == 0 ? (
+              <NoCourse />
+            ) : (
+              <View style={{ display: "flex", gap: 15 }}>
+                <CourseProgress courseList={courseList} />
+                <PracticeSection />
+                <CourseList courseList={courseList} />
+              </View>
+            )}
+          </View>
         </View>
       }
     />
@@ -60,7 +80,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    backgroundColor: Colors.WHITE,
+    // backgroundColor: Colors.WHITE,
     paddingTop: Platform.OS === "ios" && 45,
     paddingHorizontal: 30,
   },

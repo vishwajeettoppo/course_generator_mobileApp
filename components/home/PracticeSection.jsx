@@ -1,10 +1,18 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
 import { PracticeOptions } from "../../constants/Options";
 import { Image } from "react-native";
+import { useRouter } from "expo-router";
 
 export default function PracticeSection() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <Text style={styles.text1}>Practice</Text>
@@ -14,10 +22,13 @@ export default function PracticeSection() {
           data={PracticeOptions}
           numColumns={3}
           renderItem={({ item, index }) => (
-            <View style={{ flex: 1, marginHorizontal: 3 }}>
+            <TouchableOpacity
+              onPress={() => router.push("/practice/" + item.name)}
+              style={{ flex: 1, marginHorizontal: 3 }}
+            >
               <Image source={item?.image} style={styles.image} />
               <Text style={styles.imageText}>{item.name}</Text>
-            </View>
+            </TouchableOpacity>
           )}
         />
       </View>
@@ -30,7 +41,7 @@ const styles = StyleSheet.create({
   text1: {
     fontFamily: "outfit-medium",
     fontSize: 25,
-    color: Colors.PRIMARY,
+    color: Colors.WHITE,
     marginBottom: 10,
   },
   image: {
