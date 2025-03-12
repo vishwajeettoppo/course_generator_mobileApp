@@ -15,7 +15,7 @@ export const PracticeOptions = [
     name: "Question & Ans",
     image: require("../assets/images/notes.png"),
     icon: require("../assets/images/qa.png"),
-    path: "/qa",
+    path: "/quesAns",
   },
 ];
 
