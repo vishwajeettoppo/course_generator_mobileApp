@@ -9,14 +9,12 @@ export default function CourseListQuiz({ courseList, option }) {
   const router = useRouter();
 
   const onPress = (course) => {
-    if (option?.name == "Quiz") {
-      router.push({
-        pathname: "/quiz",
-        params: {
-          courseParams: JSON.stringify(course),
-        },
-      });
-    }
+    router.push({
+      pathname: option.path,
+      params: {
+        courseParams: JSON.stringify(course),
+      },
+    });
   };
   return (
     <View>
@@ -29,7 +27,6 @@ export default function CourseListQuiz({ courseList, option }) {
             key={index}
             onPress={() => onPress(item)}
             style={{
-              //   borderWidth: 1,
               flex: 1,
               display: "flex",
               flexDirection: "column",
@@ -56,16 +53,6 @@ export default function CourseListQuiz({ courseList, option }) {
             >
               {item?.courseTitle}
             </Text>
-            {/* <Text
-              style={{
-                fontFamily: "outfit",
-                textAlign: "center",
-                marginTop: 5,
-              }}
-              numberOfLines={2}
-            >
-              {item?.quiz.length} Questions
-            </Text> */}
             <View style={{ position: "absolute", top: 15, right: 15 }}>
               <Ionicons name="checkmark-done-circle" size={24} color="black" />
             </View>
