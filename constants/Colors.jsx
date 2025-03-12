@@ -5,4 +5,6 @@ export default {
   LIGHTGRAY: "#EEEEEE",
   GREEN: "#20c303",
   LIGHT_GREEN: "#9cee8e",
+  SUCCESS: "#0BDA51",
+  FAILURE: "#FA8072",
 };

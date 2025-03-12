@@ -55,6 +55,13 @@ export default function Quiz() {
     }
 
     //redirect to quiz summary
+
+    router.replace({
+      pathname: "/quiz/summary",
+      params: {
+        quizResultParam: JSON.stringify(result),
+      },
+    });
   };
   return (
     <View style={{ alignItems: "center" }}>
