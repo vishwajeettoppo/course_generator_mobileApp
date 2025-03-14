@@ -8,7 +8,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../config/firebase";
 
 export default function CourseView() {
-  const { courseParams, courseId } = useLocalSearchParams();
+  const { courseParams, courseId, enroll } = useLocalSearchParams();
   // const course = JSON.parse(courseParams);
   const router = useRouter();
   const [course, setCourse] = useState([]);

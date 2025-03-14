@@ -12,7 +12,11 @@ import { imageAssets } from "../../constants/Options";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
 
-export default function CourseList({ courseList, heading = "Your Courses" }) {
+export default function CourseList({
+  courseList,
+  heading = "Your Courses",
+  enroll = false,
+}) {
   const router = useRouter();
   return (
     <View style={styles.container}>
@@ -29,6 +33,7 @@ export default function CourseList({ courseList, heading = "Your Courses" }) {
                 pathname: "/courseView/" + item?.docId,
                 params: {
                   courseParams: JSON.stringify(item),
+                  enroll: enroll,
                 },
               })
             }

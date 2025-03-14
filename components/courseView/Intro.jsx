@@ -1,12 +1,36 @@
 import { View, Text, Image } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { imageAssets } from "../../constants/Options";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 import Button from "../shared/Button";
 import Chapters from "./Chapters";
+import { UserContext } from "../../context/UserContext";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../config/firebase";
 
-export default function Intro({ course }) {
+export default function Intro({ course, enroll }) {
+  const { userInfo } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
+  const onEnrollCourse = async () => {
+    setLoading(true);
+    const docId = Date.now().toString();
+    const data = {
+      ...course,
+      createdBy: userInfo?.email,
+      createdOn: new Date(),
+      enroll: true,
+    };
+    await setDoc(doc(db, "courses", docId), data);
+    router.push({
+      pathname: "/courseView/" + docId,
+      params: {
+        courseParams: JSON.stringify(data),
+        enroll: false,
+      },
+    });
+    setLoading(false);
+  };
   return (
     <View>
       <Image
@@ -45,7 +69,15 @@ export default function Intro({ course }) {
         >
           {course?.description}
         </Text>
-        <Button text={"Start Now"} />
+        {enroll == "true" ? (
+          <Button
+            text={"Enroll Now"}
+            onPress={() => onEnrollCourse()}
+            loading={loading}
+          />
+        ) : (
+          <Button text={"Start Now"} />
+        )}
         <Chapters course={course} />
       </View>
     </View>
