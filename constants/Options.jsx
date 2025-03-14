@@ -26,3 +26,14 @@ export const imageAssets = {
   "/banner4.png": require("../assets/images/banner4.png"),
   "/banner5.png": require("../assets/images/banner5.png"),
 };
+
+export const courseCategory = [
+  "Tech & Coding",
+  "Business & Finance",
+  "Science & Engineering",
+  "Arts & Creativity",
+  "Food & Cooking",
+  "Travel",
+  "Nature & Wildlife",
+  "Sports",
+];

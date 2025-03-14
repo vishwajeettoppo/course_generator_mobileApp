@@ -12,11 +12,11 @@ import { imageAssets } from "../../constants/Options";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
 
-export default function CourseList({ courseList }) {
+export default function CourseList({ courseList, heading = "Your Courses" }) {
   const router = useRouter();
   return (
     <View style={styles.container}>
-      <Text style={styles.text1}>Your Courses</Text>
+      <Text style={styles.text1}>{heading}</Text>
       <FlatList
         data={courseList}
         horizontal={true}
