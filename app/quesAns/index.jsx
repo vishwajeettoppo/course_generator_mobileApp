@@ -82,12 +82,23 @@ export default function QuestionAnswer() {
                     borderRadius: 12,
                   }}
                 >
-                  <Text style={{ fontFamily: "outfit", fontSize: 16 }}>
+                  <Text style={{ fontFamily: "outfit-medium", fontSize: 18 }}>
                     {item?.question}
                   </Text>
                   {selectedQues == index && (
                     <View>
-                      <Text>{item.answer}</Text>
+                      <Text
+                        style={{
+                          fontFamily: "outfit",
+                          fontSize: 15,
+                          marginTop: 10,
+                          borderTopWidth: 1,
+                          borderColor: Colors.GRAY,
+                          paddingTop: 10,
+                        }}
+                      >
+                        {item.answer}
+                      </Text>
                     </View>
                   )}
                 </Pressable>

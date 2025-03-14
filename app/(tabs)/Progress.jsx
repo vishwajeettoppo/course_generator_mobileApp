@@ -82,7 +82,7 @@ export default function Progress() {
                   })
                 }
               >
-                <CourseProgressCard item={item} width={"100%"} />
+                <CourseProgressCard item={item} width={"97%"} />
               </TouchableOpacity>
             )}
           />

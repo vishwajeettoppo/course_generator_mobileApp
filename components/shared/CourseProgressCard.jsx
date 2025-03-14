@@ -20,7 +20,8 @@ export default function CourseProgressCard({ item, width = 260 }) {
         display: "flex",
         alignItems: "center",
         width: width,
-        marginVertical: 10,
+        margin: 4,
+        elevation: 2,
       }}
     >
       <View
@@ -36,7 +37,7 @@ export default function CourseProgressCard({ item, width = 260 }) {
         />
         <View style={{ flex: 1, padding: 5 }}>
           <Text
-            numberOfLines={2}
+            numberOfLines={3}
             style={{
               fontFamily: "outfit-medium",
               fontSize: 15,

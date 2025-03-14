@@ -25,7 +25,7 @@ export default function NoCourse() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.WHITE,
+    // backgroundColor: Colors.WHITE,
     alignItems: "center",
     marginTop: 30,
     padding: 30,

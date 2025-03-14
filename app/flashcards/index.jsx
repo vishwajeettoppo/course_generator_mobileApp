@@ -64,17 +64,18 @@ export default function Flashcards() {
               color: Colors.WHITE,
             }}
           >
-            {currentPage + 1} / {flashcards.length}
+            {/* {currentPage + 1} /  */}
+            {flashcards.length} Cards
           </Text>
         </View>
-        <View style={{ alignItems: "center" }}>
+        {/* <View style={{ alignItems: "center" }}>
           <Progress.Bar
             progress={getProgress(currentPage)}
             width={Dimensions.get("screen").width * 0.85}
             borderColor={Colors.WHITE}
             color={Colors.WHITE}
           />
-        </View>
+        </View> */}
         <FlatList
           data={flashcards}
           horizontal={true}
@@ -90,11 +91,11 @@ export default function Flashcards() {
               <FlipCard
                 style={{
                   padding: 25,
-                  backgroundColor: Colors.WHITE,
+                  backgroundColor: Colors.PRIMARY,
                   marginHorizontal: 10,
                   marginVertical: 50,
                   borderRadius: 20,
-                  //   elevation: 0.1,
+                  // elevation: 0.1,
                   width: Dimensions.get("screen").width * 0.75,
                   alignItems: "center",
                 }}
@@ -132,5 +133,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontFamily: "outfit-medium",
     fontSize: 25,
+    // color: Colors.WHITE,
   },
 });

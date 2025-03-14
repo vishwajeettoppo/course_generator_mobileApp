@@ -17,6 +17,7 @@ import CourseList from "../../components/home/CourseList";
 import PracticeSection from "../../components/home/PracticeSection";
 import CourseProgress from "../../components/home/CourseProgress";
 import wave from "../../assets/images/wave3.png";
+import AddCourseButton from "../../components/home/AddCourseButton";
 
 export default function Home() {
   const [courseList, setCourseList] = useState([]);
@@ -43,37 +44,40 @@ export default function Home() {
     setLoading(false);
   };
   return (
-    <FlatList
-      data={[]}
-      onRefresh={() => getCourseList()}
-      refreshing={loading}
-      style={{ flex: 1, backgroundColor: Colors.WHITE }}
-      ListHeaderComponent={
-        <View>
-          <Image
-            source={wave}
-            style={{
-              position: "absolute",
-              height: 650,
-              width: "100%",
-              objectFit: "cover",
-            }}
-          />
-          <View style={styles.container}>
-            <Header />
-            {courseList?.length == 0 ? (
-              <NoCourse />
-            ) : (
-              <View style={{ display: "flex", gap: 15 }}>
-                <CourseProgress courseList={courseList} />
-                <PracticeSection />
-                <CourseList courseList={courseList} />
-              </View>
-            )}
+    <View style={{ flex: 1, backgroundColor: Colors.WHITE }}>
+      <FlatList
+        data={[]}
+        onRefresh={() => getCourseList()}
+        refreshing={loading}
+        style={{ flex: 1, backgroundColor: Colors.WHITE }}
+        ListHeaderComponent={
+          <View>
+            <Image
+              source={wave}
+              style={{
+                position: "absolute",
+                height: 650,
+                width: "100%",
+                objectFit: "cover",
+              }}
+            />
+            <View style={styles.container}>
+              <Header />
+              {courseList?.length == 0 ? (
+                <NoCourse />
+              ) : (
+                <View style={{ display: "flex", gap: 15 }}>
+                  <CourseProgress courseList={courseList} />
+                  <PracticeSection />
+                  <CourseList courseList={courseList} />
+                </View>
+              )}
+            </View>
           </View>
-        </View>
-      }
-    />
+        }
+      />
+      <AddCourseButton />
+    </View>
   );
 }
 
@@ -82,6 +86,6 @@ const styles = StyleSheet.create({
     // flex: 1,
     // backgroundColor: Colors.WHITE,
     paddingTop: Platform.OS === "ios" && 45,
-    paddingHorizontal: 30,
+    paddingHorizontal: 25,
   },
 });

@@ -13,14 +13,14 @@ export default {
     -User wants to learn about all the topics.
     -Create one course with Course Name, Description, and chapters of the topics in each course.
     -Make sure to add chapters with all learning materials course wise.
-    -Add Course Banner image from ('/banner1.png', '/banner2.png', '/banner3.png', '/banner4.png')
+    -Add any Course Banner image from ('/banner1.png', '/banner2.png', '/banner3.png', '/banner4.png')
     -Explain the chapter concept as detailed tutorial.
     -Generate 10 quizzes , 10 flashcards, and 5 Question answer.
     -Tag the course to one of the categories from ["Tech & Coding", "Business & Finance", "Science & Engineering", "Arts & Creativity", "Food & Cooking", "Travel", "Nature & Wildlife", "Sports"],
     -Output in JSON format only.
     -"courses":[
     {
-        "courseTitle":'<max 3 worded title>',
+        "courseTitle":'',
         "description":'',
         "bannerImage":'/banner1.png',
         "category":"",
