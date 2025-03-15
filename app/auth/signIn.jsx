@@ -8,14 +8,16 @@ import {
   Pressable,
   ToastAndroid,
   ActivityIndicator,
+  Platform,
+  Alert,
 } from "react-native";
 import React, { useContext, useState } from "react";
 import { useRouter } from "expo-router";
 import Colors from "../../constants/Colors";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { UserContext } from "../../context/UserContext";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function SignIn() {
   const router = useRouter();
@@ -33,13 +35,21 @@ export default function SignIn() {
         // console.log(user);
         await getUserDetail();
         setLoading(false);
-        ToastAndroid.show("Login Successful", ToastAndroid.SHORT);
+        if (Platform.OS === "web") {
+          Alert.alert("Login Successful");
+        } else {
+          ToastAndroid.show("Login Successful", ToastAndroid.SHORT);
+        }
         router.replace("/(tabs)/Home");
       })
       .catch((err) => {
         console.log(err.message);
         setLoading(false);
-        ToastAndroid.show("Incorrect Email or Password", ToastAndroid.SHORT);
+        if (Platform.OS === "web") {
+          Alert.alert("Incorrect Email or Password");
+        } else {
+          ToastAndroid.show("Incorrect Email or Password", ToastAndroid.SHORT);
+        }
       });
   };
 
