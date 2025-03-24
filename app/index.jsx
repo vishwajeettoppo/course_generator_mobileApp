@@ -3,22 +3,21 @@ import Colors from "@/constants/Colors";
 import { useRouter } from "expo-router";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "@/config/firebase";
-import { getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { useContext } from "react";
 import { UserContext } from "@/context/UserContext";
-
 
 export default function Index() {
   const router = useRouter();
   const { userInfo, setUserInfo } = useContext(UserContext);
 
-  onAuthStateChanged(auth, async(user) => {
+  onAuthStateChanged(auth, async (user) => {
     if (user) {
-      // console.log(user);
+      console.log(user);
       const result = await getDoc(doc(db, "users", user.email));
       console.log(result.data());
       setUserInfo(result.data());
-      router.replace('/(tabs)/Home');
+      router.replace("/(tabs)/Home");
     }
   });
 

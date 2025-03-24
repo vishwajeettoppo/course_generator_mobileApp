@@ -7,7 +7,7 @@ import Colors from "../../constants/Colors";
 export default function Header() {
   const { userInfo, setUserInfo } = useContext(UserContext);
 
-  // console.log('Name : ',userInfo)
+  console.log("Name : ", userInfo);
 
   return (
     <View style={styles.container}>

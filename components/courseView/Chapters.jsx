@@ -21,7 +21,7 @@ export default function Chapters({ course }) {
   // );
 
   const isChapterCompleted = (index) => {
-    const isCompleted = course?.completedChapter.find((item) => item == index);
+    const isCompleted = course?.completedChapter?.find((item) => item == index);
     return isCompleted ? true : false;
   };
   return (
